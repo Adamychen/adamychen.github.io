@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-mml-chtml.js">
+        </script>
+    <title>Modelos de Computación y Complejidad</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <div class="main">
+        <div>
+            <a href="cars.csv" download="cars.csv">cars.csv</a>
+        </div>
+        <h1>Relación de ejercicios 1</h1>
+
+        <h2>Problemas hechos en clase</h2>
+        <ul>
+            <li>4</li>
+            <li>7</li>
+            <li>8</li>
+            <li>11</li>
+            <li>13</li>
+            <li>17</li>
+            <li>23</li>
+        </ul>
+        <div class="ejercicio">
+            <h2>Ejercicio 1</h2>
+            <p>
+                Diseñar programas GOTO que, sin usar macros (salvo quizás GOTO L), calculen las funciones:
+            </p>
+
+            <div class="align">
+                <div class="equation">
+                    \(f_1(x) = 3x \quad \)
+                </div>
+                <div class="equation">
+                    \(f_2(x) = \begin{cases}
+                    1 & \text{si } x \text{ es par} \\
+                    0 & \text{si } x \text{ es impar}
+                    \end{cases}
+                    \)
+                </div>
+                <div class="equation">
+                    \(f_3(x) = \begin{cases}
+                    1 & \text{si } x \text{ es par} \\
+                    \uparrow & \text{si } x \text{ es impar}
+                    \end{cases}
+                    \)
+                </div>
+            </div>
+            <div class="desplegable">Solución \(f_1\)></div>
+            <div class="solucion">
+
+                <h3>\(f_1\)</h3>
+                <p>El siguiente programa \(P_1\) calcula la función \(f_1\)</p>
+                <div class="goto_code">
+                    <p> \(\quad Z_1 \leftarrow Z_1 + 1\)</p>
+                    <p> \(\quad Z_1 \leftarrow Z_1 + 1\)</p>
+                    <p> \(\quad Z_1 \leftarrow Z_1 + 1\)</p>
+                    <p>\(\quad\) IF X \( \neq 0\) GOTO A</p>
+                    <p>\(\quad Z_5 \leftarrow Z_5 + 1 \)</p>
+                    <p>\(\quad\) IF \(Z_5 \neq 0\) GOTO E</p>
+                    <p>[A] \( Y \leftarrow Y + 1\)</p>
+                    <p>\(\quad\) \(Z_2 \leftarrow Z_2 + 1\)</p>
+                    <p> \(\quad\) \(X \leftarrow X - 1\)</p>
+                    <p>\(\quad\) IF \(X \neq 0\) GOTO E</p>
+                    <p> \(\quad Z_1 \leftarrow Z_1 - 1\)</p>
+                    <p>\(\quad\) IF \(Z_1 \neq 0\) GOTO B</p>
+                    <p> \(\quad Z_1 \leftarrow Z_1 - 1\)</p>
+                    <p>\(\quad\) IF \(Z_1 \neq 0\) GOTO B</p>
+                    <p>\(\quad Z_5 \leftarrow Z_5 + 1 \)</p>
+                    <p>\(\quad\) IF \(Z_5 \neq 0\) GOTO E</p>
+                    <p>[B] \( Z_2 \leftarrow Z_2 - 1\)</p>
+                    <p>\(\quad\) \(X \leftarrow X + 1\)</p>
+                    <p>\(\quad\) IF \(Z_2 \neq 0\) GOTO B</p>
+                    <p>\(\quad\) IF \(X \neq 0\) GOTO A</p>
+                    <p>[E] \(X \leftarrow X \)</p>
+                </div>
+
+                \[ [[P_1]]^{(1)} = f_1
+                \]
+
+
+
+
+
+            </div>
+            <div class="desplegable">Solución \(f_2\)></div>
+            <div class="solucion">
+                <h3>\(f_2\)</h3>
+                <p>El siguiente programa \(P_2\) calcula la función \(f_2\)</p>
+                <div class="goto_code">
+                    <p>\(\quad\) IF \(X \neq 0\) GOTO A</p>
+                    <p>\(\quad Y \leftarrow Y + 1\)</p>
+                    <p>\(\quad \) IF \(Y \neq 0 \) GOTO E</p>
+                    <p>[A] \(X \leftarrow X - 1\)</p>
+                    <p>\(\quad\) IF X \( \neq 0\) GOTO B</p>
+                    <p> \(\quad Z_1 \leftarrow Z_1 + 1\)</p>
+                    <p>\(\quad\) IF \( Z_1 \neq 0\) GOTO E</p>
+                    <p>[B] \(X \leftarrow X - 1\)</p>
+                    <p>\(\quad\) IF X \( \neq 0\) GOTO A</p>
+                    <p>\(\quad Y \leftarrow Y + 1\)</p>
+                    <p>[E] \(X \leftarrow X\)</p>
+                </div>
+
+                \[ [[P_2]]^{(1)} = f_2
+                \]
+            </div>
+
+            <div class="desplegable">Solución \(f_3\)></div>
+            <div class="solucion">
+                <h3>\(f_3\)</h3>
+                <p>El siguiente programa \(P_3\) calcula la función \(f_3\), tomando el programa \(P_2\) y cambiando las
+                    líneas señaladas obtenemos el nuevo programa</p>
+                <div class="goto_code">
+                    <p>\(\quad\) IF \(X \neq 0\) GOTO A</p>
+                    <p>\(\quad Y \leftarrow Y + 1\)</p>
+                    <p>\(\quad \) IF \(Y \neq 0 \) GOTO E</p>
+                    <p>[A] \(X \leftarrow X - 1\)</p>
+                    <p>\(\quad\) IF X \( \neq 0\) GOTO B</p>
+                    <p>[C] \( Z_1 \leftarrow Z_1 + 1\) <strong>(línea cambiada)</strong></p>
+                    <p>\(\quad\) IF \( Z_1 \neq 0\) GOTO C <strong>(línea cambiada)</strong></p>
+                    <p>[B] \(X \leftarrow X - 1\)</p>
+                    <p>\(\quad\) IF X \( \neq 0\) GOTO A</p>
+                    <p>\(\quad Y \leftarrow Y + 1\)</p>
+                    <p>[E] \(X \leftarrow X\)</p>
+                </div>
+
+                \[ [[P_3]]^{(1)} = f_3
+                \]
+            </div>
+        </div>
+
+        <div class="ejercicio">
+            <h2>Ejercicio 2</h2>
+            <p>Probar que las siguientes funciones son GOTO-computables:</p>
+            <div class="align">
+                <div class="equation">
+                    \(g_1(x_1, x_2) = \begin{cases}
+                    1 & \text{si } x_1 = x_2 \\
+                    0 & \text{si } x_1 \neq x_2
+                    \end{cases}\)
+                </div>
+                <div class="equation">
+                    \(g_2(x_1, x_2) = \begin{cases}
+                    1 & \text{si } x_1 \leq x_2 \\
+                    0 & \text{si } x_1 > x_2
+                    \end{cases}\)
+                </div>
+            </div>
+            <div class="align">
+                <div class="equation">
+                    \(g_1(x_1, x_2) = mín \{x_1, x_2 \}\)
+                </div>
+                <div class="equation">
+                    \(g_2(x_1, x_2) = \begin{cases}
+                    1 & \text{si } x_1 \leq x_2 \\
+                    0 & \text{si } x_1 > x_2
+                    \end{cases}\)
+                </div>
+            </div>
+        </div>
+
+        <div class="ejercicio">
+            <h2>Ejercicio 13</h2>
+            <p>Sea \(GOTO_A\) el lenguaje definido como \(GOTO\) pero cuyas intrucciones (etiquetadas o no) son:</p>
+            \[
+            V \leftarrow V'
+            \]
+            \[
+            V \leftarrow V + 1
+            \]
+            \[
+            \text{IF} \quad V \neq V' \quad \text{GOTO L}
+            \]
+            <p>que tienen interpretación obvia. Probar que una función \(f\) es \(GOTO_A\)-computable si y sólo si \(f\)
+                es \(GOTO\)-computable</p>
+
+            <div class="desplegable">Solución</div>
+            <div class="solucion">
+                <p>Si \(f\) es \(GOTO_A\)-computable entonces \(f\) es \(GOTO\)-computable ya que:</p>
+                <p>
+                    Sea \(P\) el programa obtenido a partir de \(Q\)
+                    interpretando las instrucciones de \(Q\) como macros de \(GOTO\).
+                    Entonces \([[P]] = f\), por lo que \(f\) es \(GOTO_A\)-computable
+                </p>
+                <p>Tenemos entonces que si \(f\) es \(GOTO_A\)-computable \(\rightarrow f\) es \(GOTO\)-computable</p>
+                <p>Basta probar que si \(\rightarrow f\) es \(GOTO\)-computable entonces \(f\) es \(GOTO_A\)-computable
+                </p>
+                <p>Tenemos que probar que las instrucciones de \(GOTO\) que no están en \(GOTO_A\) son macros de
+                    \(GOTO_A\)</p>
+                \[
+                \text{IF } V \neq 0 \text{ GOTO L}
+                \]
+                \[
+                V \leftarrow V
+                \]
+                \[
+                V \leftarrow V - 1
+                \]
+
+                <p>Para la macro \(\text{IF } V \neq 0 \text{ GOTO L}\)</p>
+
+                <div class="goto_code">
+                    <p>\(\quad Z_1 \leftarrow X_1 = X_2 \) </p>
+                    <p>\(\quad\)IF \(Z_1 \neq 0\) GOTO L</p>
+                    <p>\(\quad Z_1 \leftarrow Z_1 + 1\)</p>
+                    <p>\(\quad\)GOTO E</p>
+                    <p>[L] \(Z_1 \leftarrow Z_1 - 1\)</p>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>

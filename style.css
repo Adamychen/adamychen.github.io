@@ -1,0 +1,23 @@
+.goto_code {
+    background-color: #eee;
+    border: 1px solid #999;
+    display: block;
+    padding: 20px;
+}
+
+.main {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.align {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.solucion { display: none; }
+.desplegable { cursor: pointer; padding: 5px; border: 1px solid #ccc; }
+
+.equation {
+    padding: 5%;
+}
